@@ -10,9 +10,9 @@ INSTALL_PREFIX=$(pwd)/triqs
 # 设置编译所用的核心数
 NCORES=6
 
-# 用 cmake 配置编译步骤
+# 用 cmake 配置编译步骤 disabled tests
 mkdir -p triqs.build && cd triqs.build
-cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 
 # 编译，测试和安装
 make -j$NCORES && make test && make install
