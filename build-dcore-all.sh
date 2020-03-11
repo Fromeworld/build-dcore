@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # ======================
-# 1.
+# 1. make build dir
 mkdir -p deps && cd deps
 
 # ======================
-# 2.
+# 2. install deps from ppa
 sudo apt-get install cmake g++ gfortran git hdf5-tools \
      libblas-dev libboost-all-dev libfftw3-dev libgfortran3 \
      libhdf5-serial-dev libgmp-dev liblapack-dev libopenmpi-dev \
@@ -14,7 +14,7 @@ sudo apt-get install cmake g++ gfortran git hdf5-tools \
 && pip install enum34
 
 # ======================
-# 3.
+# 3. install triqs
 # download source and untar
 curl -Lo triqs-2.1.1.tar.gz https://github.com/TRIQS/triqs/archive/2.1.1.tar.gz
 tar zxvf triqs-2.1.1.tar.gz
@@ -22,10 +22,10 @@ tar zxvf triqs-2.1.1.tar.gz
 # set install dir
 INSTALL_PREFIX=$(pwd)/triqs
 
-# build core 
+# set multi-core to compile
 NCORES=6
 
-# cmake disable test
+# cmake disabled test otherwise takes forever (problem when 60% test/...bubble, 100% disk usage)
 mkdir -p triqs.build && cd triqs.build
 cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 
@@ -34,89 +34,89 @@ make -j$NCORES && make test && make install
 cd ../
 
 # ======================
-# 4. installing DFTTools
+# 4. install DFTTools
 
-# 下载源代码并解压
+# download source and untar
 curl -Lo dft_tools-2.1.0.tar.gz https://github.com/TRIQS/dft_tools/archive/2.1.0.tar.gz
 tar zxvf dft_tools-2.1.0.tar.gz
 
-# 设置 Triqs 目录位置
+# set install dir
 TRIQS_PATH=$(pwd)/triqs
 
-# 设置编译所用的核心数
+# set multi-core to compile
 NCORES=6
 
-# 用 cmake 配置编译步骤
+# cmake
 mkdir -p dft_tools.build && cd dft_tools.build
 source $TRIQS_PATH/share/triqsvars.sh
 cmake -DTRIQS_PATH=$TRIQS_PATH ../dft_tools-2.1.0
 
-# 编译，测试和安装
+# compile and test
 make -j$NCORES && make test && make install
 cd ../
 
 # ======================
 # 5. ALPS
-# 
-curl -Lo triqs-2.1.1.tar.gz https://github.com/TRIQS/triqs/archive/2.1.1.tar.gz
-tar zxvf triqs-2.1.1.tar.gz
+# download source and untar
+curl -Lo alpscore-v2.2.0.tar.gz https://github.com/ALPSCore/ALPSCore/archive/v2.2.0.tar.gz
+tar zxvf alpscore-v2.2.0.tar.gz
 
-# 
-INSTALL_PREFIX=$(pwd)/triqs
+# set install dir
+INSTALL_PREFIX=$(pwd)/ALPSCore
 
-# 
+# set multi-core to compile
 NCORES=6
 
-# 
-mkdir -p triqs.build && cd triqs.build
-cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+# cmake
+mkdir -p ALPSCore.build && cd ALPSCore.build
+cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
-# 
+# compile and test
 make -j$NCORES && make test && make install
 cd ../
 
 # ======================
 # 6. CT-HYB
 
-# 下载源代码并解压
+# download source and untar
 curl -Lo ct-hyb-v1.0.3.tar.gz https://github.com/ALPSCore/CT-HYB/archive/v1.0.3.tar.gz
 tar zxvf ct-hyb-v1.0.3.tar.gz
 
-# 设置 ALPSCore 目录位置
+# alps pat
 ALPSCore_PATH=$(pwd)/ALPSCore/share/ALPSCore
 
-# 设置 CT-HYB 安装位置
+# CT-HYB path
 INSTALL_PREFIX=$(pwd)/CT-HYB
 
-# 设置编译所用的核心数
+# set multi-core to compile
 NCORES=6
 
-# 用 cmake 配置编译步骤
+# cmake
 mkdir -p CT-HYB.build && cd CT-HYB.build
 cmake -DALPSCore_DIR=$ALPSCore_PATH -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ../CT-HYB-1.0.3
 
-# 编译，测试和安装
+# compile and test
 make -j$NCORES && make test && make install
 cd ../
 
 # ======================
 # 7. DCore
 
-# 下载源代码并解压
+# download source and untar
 curl -Lo dcore-v2.0.1.tar.gz https://github.com/issp-center-dev/DCore/archive/v2.0.1.tar.gz
 tar zxvf dcore-v2.0.1.tar.gz
 
-# 设置 DCore 安装目录
+#  DCore path
 INSTALL_PREFIX=$(pwd)/install
 
-# 设置 Triqs 目录位置
+#  Triqs path
 TRIQS_PATH=$(pwd)/deps/triqs
 
-# 用 cmake 配置编译步骤
+# cmake
 mkdir -p build && cd build
 source $TRIQS_PATH/share/triqsvars.sh
 cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
-# 编译，测试和安装
+# compile and test
 make && make test && make install
 cd ../
