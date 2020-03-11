@@ -4,29 +4,31 @@
 
 echo "start"
 
+echo "1. mkdir"
+
 mkdir -p deps && cd deps
 
-echo "installing from ppa and pip"
+echo "2. installing from ppa and pip"
 
 ../install_deps.sh
 
-echo "installing triqs"
+echo "3. installing triqs"
 
 ../install_triqs.sh
 
-echo "installing DFTTools"
+echo "4. installing DFTTools"
 
 ../install_DFTTools.sh
 
-echo "installing ALPSCore"
+echo "5. installing ALPSCore"
 
 ../install_ALPSCore.sh
 
-echo "installing CT-HYB"
+echo "6. installing CT-HYB"
 
 ../install_CT-HYB.sh
 
-echo "DCore"
+echo "7. DCore"
 
 ../install_DCore.sh
 
