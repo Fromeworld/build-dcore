@@ -8,26 +8,26 @@ mkdir -p deps && cd deps
 
 echo "installing from ppa and pip"
 
-sh ./install_deps.sh
+exec  ./install_deps.sh
 
 echo "installing triqs"
 
-sh ./install_triqs.sh
+exec  ./install_triqs.sh
 
 echo "installing DFTTools"
 
-sh ./install_DFTTools.sh
+exec  ./install_DFTTools.sh
 
 echo "installing ALPSCore"
 
-sh ./install_ALPSCore.sh
+exec  ./install_ALPSCore.sh
 
 echo "installing CT-HYB"
 
-sh ./install_CT-HYB.sh
+exec  ./install_CT-HYB.sh
 
 echo "DCore"
 
-sh ./install_DCore.sh
+exec  ./install_DCore.sh
 
 echo "done"
