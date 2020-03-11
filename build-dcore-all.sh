@@ -25,9 +25,9 @@ INSTALL_PREFIX=$(pwd)/triqs
 # build core 
 NCORES=6
 
-# cmake
+# cmake disable test
 mkdir -p triqs.build && cd triqs.build
-cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 
 # compile
 make -j$NCORES && make test && make install
