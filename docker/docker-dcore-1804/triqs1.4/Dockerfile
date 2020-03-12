@@ -1,4 +1,4 @@
-FROM fromeworld/dev_ubuntu1804_for_triqs
+FROM fromeworld/dev_ubuntu_user
 # TRIQS
 
 # This forces an update of the cache when the master branch moves

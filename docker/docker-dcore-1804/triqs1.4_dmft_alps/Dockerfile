@@ -12,14 +12,17 @@ RUN make -j 2 \
 
 # Clone and build ALPS/CT-HYB
 WORKDIR $HOME/src
-RUN git clone -b master --single-branch https://github.com/ALPSCore/CT-HYB.git && mkdir $HOME/build/alps_cthyb
+RUN git clone -b master --single-branch https://github.com/ALPSCore/CT-HYB.git \
+&& mkdir $HOME/build/alps_cthyb
 WORKDIR $HOME/build/alps_cthyb
-ENV ALPSCore_DIR="$HOME/opt/ALPSCore"
-RUN cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=$HOME/opt/alps_cthyb -DCMAKE_CXX_FLAGS="-std=c++1y" $HOME/src/CT-HYB \
- && make -j 2 install \
+# You must use a MPI C++ compiler. 
+RUN cmake -DCMAKE_CXX_COMPILER=/usr/bin/mpic++ -DALPSCore_DIR=$HOME/opt/ALPSCore/share/ALPSCore -DCMAKE_VERBOSE_MAKEFILE=ON  -DCMAKE_INSTALL_PREFIX=$HOME/opt/alps_cthyb -DCMAKE_CXX_FLAGS="-std=c++11" $HOME/src/CT-HYB 
+RUN make\
+ && make install \
  && make test \
  && make clean
 
+ENV ALPSCore_DIR="$HOME/opt/ALPSCore"
 # Clone and build pytriqs interface of ALPS/CT-HYB
 WORKDIR $HOME/src
 RUN git clone -b master --single-branch https://github.com/shinaoka/triqs_interface.git && mkdir $HOME/build/triqs_interface

@@ -120,8 +120,30 @@ cd ../
 rm ct-hyb-v1.0.3.tar.gz
 rm -rf CT-HYB.build
 
+
 # ======================
-# 7. DCore
+# 7. Hubbard I
+# 
+git clone https://github.com/malte-schueler/triqs_hubbardI triqs_hubbardI.src
+
+# triqs path
+TRIQS_PATH=$(pwd)/triqs
+
+# core number
+NCORES=6
+
+# cmake
+mkdir -p triqs-hubbardI.build && cd triqs-hubbardI.build
+source $TRIQS_PATH/share/triqsvars.sh
+cmake ../triqs_hubbardI.src
+
+# compile
+make -j$NCORES && make test && make install
+cd ../
+
+
+# ======================
+# 8. DCore
 
 # download source and untar
 curl -Lo dcore-v2.0.1.tar.gz https://github.com/issp-center-dev/DCore/archive/v2.0.1.tar.gz

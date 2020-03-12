@@ -2,7 +2,7 @@ FROM fromeworld/triqs1.4
 
 # Clone and build triqs/dft_tools
 WORKDIR $HOME/src
-RUN git clone -b master --single-branch https://github.com/TRIQS/dft_tools.git \
+RUN git clone -b 2.2.x --single-branch https://github.com/TRIQS/dft_tools.git \
  && cd dft_tools \
  && git checkout d00575632c4 \
  && mkdir $HOME/build/dft_tools
@@ -15,7 +15,7 @@ RUN cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DTRIQS_PATH=$HOME/opt/triqs $HOME/src/dft
 
 # Clone and build triqs/hubbardI (from forked repo due to some compilation errors)
 WORKDIR $HOME/src
-RUN git clone -b master --single-branch https://github.com/TRIQS/hubbardI.git \
+RUN git clone -b 1.4.x --single-branch https://github.com/TRIQS/hubbardI.git \
  && mkdir $HOME/build/hubbardI
 WORKDIR $HOME/build/hubbardI
 RUN cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DTRIQS_PATH=$HOME/opt/triqs $HOME/src/hubbardI \

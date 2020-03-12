@@ -1,1 +1,1 @@
-docker build -t fromeworld/triqs1.4_dmft_alps .
+docker build -t fromeworld/triqs1.4_dmft_alps_dcore .
