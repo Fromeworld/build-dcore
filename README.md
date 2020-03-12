@@ -17,9 +17,10 @@ bash build-dcore-all.sh
 [x] remove tarballs
 [x] install file outside of the git folder
 [x] remove build folders
-[] source dcore
-[] Hubbard-I not found
-[] use docker
+[x] source dcore
+[x] Hubbard-I not found
+[x] use docker
+[ ] add https://github.com/aeantipov/pomerol and https://github.com/j-otsuki/pomerol2dcore/blob/master/CMakeLists.txt
 
 
 ## ALPS
