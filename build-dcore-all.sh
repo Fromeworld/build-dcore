@@ -125,3 +125,6 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PR
 make && make test && make install
 make clean
 cd ../
+
+sudo apt-get clean
+sudo apt-get autoclean
