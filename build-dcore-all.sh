@@ -33,6 +33,8 @@ cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 make -j$NCORES && make test && make install
 make clean
 cd ../
+
+# remove tarball and build folder
 rm triqs-2.1.1.tar.gz
 rm -rf triqs.build
 
@@ -58,6 +60,8 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../dft_tools-2.1.0
 make -j$NCORES && make test && make install
 make clean
 cd ../
+
+# remove tarball and build folder
 rm dft_tools-2.1.0.tar.gz
 rm -rf dft_tools.build
 
@@ -81,6 +85,8 @@ cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL
 make -j$NCORES && make test && make install 
 make clean
 cd ../
+
+# remove tarball and build folder
 rm alpscore-v2.2.0.tar.gz
 rm -rf ALPSCore.build
 
@@ -108,6 +114,8 @@ cmake -DALPSCore_DIR=$ALPSCore_PATH -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ../CT
 make -j$NCORES && make test && make install
 make clean
 cd ../
+
+# remove tarball and build folder
 rm ct-hyb-v1.0.3.tar.gz
 rm -rf CT-HYB.build
 
@@ -133,6 +141,8 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PR
 make && make test && make install
 make clean
 cd ../
+
+# remove tarball and build folder
 rm dcore-v2.0.1.tar.gz
 rm -rf DCore.build
 
