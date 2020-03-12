@@ -1,5 +1,6 @@
-# copy paste from
+# copy paste a blog (google searched)
 
+Original post: 
 <https://hehome.xyz/archives/807/>
 
 Shell script for building DCore (DMFT software for CORrelated Electrons) <https://github.com/issp-center-dev/DCore>
