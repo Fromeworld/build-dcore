@@ -2,7 +2,7 @@
 
 # ======================
 # 1. make build dir
-mkdir -p deps && cd deps
+mkdir -p ../dcore-deps && cd ../dcore-deps
 
 # ======================
 # 2. install deps by ubuntu apt and then pip
@@ -33,6 +33,8 @@ cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 make -j$NCORES && make test && make install
 make clean
 cd ../
+rm triqs-2.1.1.tar.gz
+rm -rf triqs.build
 
 # ======================
 # 4. install DFTTools
@@ -56,6 +58,8 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../dft_tools-2.1.0
 make -j$NCORES && make test && make install
 make clean
 cd ../
+rm dft_tools-2.1.0.tar.gz
+rm -rf dft_tools.build
 
 # ======================
 # 5. ALPS
@@ -77,6 +81,8 @@ cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL
 make -j$NCORES && make test && make install 
 make clean
 cd ../
+rm alpscore-v2.2.0.tar.gz
+rm -rf ALPSCore.build
 
 # ======================
 # 6. CT-HYB
@@ -102,6 +108,8 @@ cmake -DALPSCore_DIR=$ALPSCore_PATH -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ../CT
 make -j$NCORES && make test && make install
 make clean
 cd ../
+rm ct-hyb-v1.0.3.tar.gz
+rm -rf CT-HYB.build
 
 # ======================
 # 7. DCore
@@ -117,7 +125,7 @@ INSTALL_PREFIX=$(pwd)/install
 TRIQS_PATH=$(pwd)/deps/triqs
 
 # cmake
-mkdir -p build && cd build
+mkdir -p DCore.build && cd DCore.build
 source $TRIQS_PATH/share/triqsvars.sh
 cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
@@ -125,6 +133,10 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PR
 make && make test && make install
 make clean
 cd ../
+rm dcore-v2.0.1.tar.gz
+rm -rf DCore.build
 
+# ======================
+# 
 sudo apt-get clean
 sudo apt-get autoclean

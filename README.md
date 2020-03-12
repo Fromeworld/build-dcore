@@ -1,7 +1,6 @@
-# copy paste a blog (google searched)
+# Shell script for building DCore
 
-Original post: 
-<https://hehome.xyz/archives/807/>
+Copy paste a blog (google searched) see: <https://hehome.xyz/archives/807/>
 
 Shell script for building DCore (DMFT software for CORrelated Electrons) <https://github.com/issp-center-dev/DCore>
 
@@ -13,5 +12,11 @@ cd build-dcore
 bash build-dcore-all.sh
 ```
 
+## TODO
 
+[x] remove tarballs
+[x] install file outside of the git folder
+[x] remove build folders
+[] source dcore
+[] Hubbard-I not found
 
