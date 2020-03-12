@@ -31,6 +31,7 @@ cmake ../triqs-2.1.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBuild_Tests=OFF
 
 # compile
 make -j$NCORES && make test && make install
+make clean
 cd ../
 
 # ======================
@@ -53,6 +54,7 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../dft_tools-2.1.0
 
 # compile and test
 make -j$NCORES && make test && make install
+make clean
 cd ../
 
 # ======================
@@ -72,7 +74,8 @@ mkdir -p ALPSCore.build && cd ALPSCore.build
 cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
 # compile and test
-make -j$NCORES && make test && make install
+make -j$NCORES && make test && make install 
+make clean
 cd ../
 
 # ======================
@@ -97,6 +100,7 @@ cmake -DALPSCore_DIR=$ALPSCore_PATH -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ../CT
 
 # compile and test
 make -j$NCORES && make test && make install
+make clean
 cd ../
 
 # ======================
@@ -119,4 +123,5 @@ cmake -DTRIQS_PATH=$TRIQS_PATH ../DCore-2.0.1 -DCMAKE_INSTALL_PREFIX=$INSTALL_PR
 
 # compile and test
 make && make test && make install
+make clean
 cd ../
