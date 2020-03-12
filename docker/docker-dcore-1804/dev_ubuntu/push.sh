@@ -1,0 +1,1 @@
+docker push fromeworld/dev_ubuntu1804_for_triqs

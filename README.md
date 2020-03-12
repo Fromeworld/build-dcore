@@ -19,6 +19,7 @@ bash build-dcore-all.sh
 [x] remove build folders
 [] source dcore
 [] Hubbard-I not found
+[] use docker
 
 
 ## ALPS
