@@ -12,7 +12,7 @@ NCORES=6
 
 # 用 cmake 配置编译步骤
 mkdir -p ALPSCore.build && cd ALPSCore.build
-cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+cmake ../ALPSCore-2.2.0 -DALPS_INSTALL_EIGEN=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DTESTING=OFF
 
 # 编译，测试和安装
 make -j$NCORES && make test && make install

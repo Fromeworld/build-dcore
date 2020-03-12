@@ -20,3 +20,15 @@ bash build-dcore-all.sh
 [] source dcore
 [] Hubbard-I not found
 
+
+## ALPS
+
+To build alps it may need a lot mem. It give a error
+``` 
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+accumulators/CMakeFiles/alps-accumulators.dir/build.make:158: recipe for target 'accumulators/CMakeFiles/alps-accumulators.dir/src/wrapper_set_hdf5.cpp.o' failed
+make[2]: *** [accumulators/CMakeFiles/alps-accumulators.dir/src/wrapper_set_hdf5.cpp.o] Error 4
+make[2]: *** Waiting for unfinished jobs....
+```

@@ -65,6 +65,7 @@ cd ../
 rm dft_tools-2.1.0.tar.gz
 rm -rf dft_tools.build
 
+
 # ======================
 # 5. ALPS
 # download source and untar
@@ -145,6 +146,7 @@ cd ../
 # remove tarball and build folder
 rm dcore-v2.0.1.tar.gz
 rm -rf DCore.build
+
 
 # ======================
 # 
