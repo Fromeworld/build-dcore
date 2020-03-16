@@ -33,7 +33,7 @@ echo "PYTHONPATH = $PYTHONPATH"
 
 dir_script=`dirname $0`
 
-ini=../dmft_square.in
+ini=../dmft_square.ini
 seedname=square
 
 # ---------------------------------
